@@ -20,6 +20,8 @@ jobs:
     env:
       TF_VAR_clusterName: ${{ github.event.inputs.clusterName }}
       TF_VAR_awsRegion: ${{ github.event.inputs.awsRegion }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -44,6 +46,8 @@ jobs:
     env:
       TF_VAR_clusterName: ${{ github.event.inputs.clusterName }}
       TF_VAR_awsRegion: ${{ github.event.inputs.awsRegion }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
