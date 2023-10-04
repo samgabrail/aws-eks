@@ -1,6 +1,5 @@
 module "eks" {
-  source  = "app.terraform.io/TeKanAid/eks/aws"
-  version = "0.0.7"
+  source  = "./modules/eks"
 
   region               = "us-east-1"
   cluster_version      = "1.27"
