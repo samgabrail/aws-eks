@@ -1,0 +1,37 @@
+name: Manage EKS Cluster
+
+on:
+  workflow_dispatch:
+    inputs:
+      clusterName:
+        description: 'Name of the EKS cluster'
+        required: true
+      awsRegion:
+        description: 'AWS Region for the cluster'
+        required: true
+      action:
+        description: 'Action to perform (apply/destroy)'
+        required: true
+
+jobs:
+  apply_cluster:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.action == 'apply' }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+  destroy_cluster:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.action == 'destroy' }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve
