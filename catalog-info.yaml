@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dev-eks-cluster
+  description: AWS EKS cluster managed by Terraform
+  tags:
+    - aws
+    - eks
+    - terraform
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
