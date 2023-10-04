@@ -17,6 +17,9 @@ jobs:
   apply_cluster:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.action == 'apply' }}
+    env:
+      TF_VAR_clusterName: ${{ github.event.inputs.clusterName }}
+      TF_VAR_awsRegion: ${{ github.event.inputs.awsRegion }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -38,6 +41,9 @@ jobs:
   destroy_cluster:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.action == 'destroy' }}
+    env:
+      TF_VAR_clusterName: ${{ github.event.inputs.clusterName }}
+      TF_VAR_awsRegion: ${{ github.event.inputs.awsRegion }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
