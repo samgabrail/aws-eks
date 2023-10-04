@@ -2,6 +2,8 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: dev-eks-cluster
+  annotations:
+    github.com/project-slug: samgabrail/aws-eks
   description: AWS EKS cluster managed by Terraform
   tags:
     - aws
