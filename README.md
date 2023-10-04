@@ -22,7 +22,7 @@ aws eks --region $(terraform output -raw region) update-kubeconfig \
 Example:
 ```bash
 aws eks --region us-east-1 update-kubeconfig \
-    --name env0_eks_cluster
+    --name my_eks_cluster
 ```
 
 ## Resources that will get provisioned:
