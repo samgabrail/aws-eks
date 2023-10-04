@@ -1,0 +1,21 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"features": {
+		"ghcr.io/devcontainers/features/aws-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/terraform:1": {
+			"version": "1.5.5",
+			"tflint": "latest",
+			"terragrunt": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/pulumi:1": {
+			"bashCompletion": true,
+			"version": "3.43.0"
+		},
+		"ghcr.io/devcontainers-contrib/features/terraform-asdf:2": {
+			"version": "latest"
+		},
+		"ghcr.io/dhoeric/features/terraform-docs:1": {}
+	}
+}
