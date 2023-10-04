@@ -17,11 +17,6 @@ jobs:
   apply_cluster:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.action == 'apply' }}
-    env:
-      TF_VAR_clusterName: ${{ github.event.inputs.clusterName }}
-      TF_VAR_awsRegion: ${{ github.event.inputs.awsRegion }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -39,17 +34,12 @@ jobs:
       run: terraform validate
       working-directory: Terraform
     - name: Terraform Apply
-      run: terraform apply -auto-approve
+      run: terraform apply -var clusterName=${{ github.event.inputs.clusterName }} -var awsRegion=${{ github.event.inputs.awsRegion }} -auto-approve
       working-directory: Terraform
 
   destroy_cluster:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.action == 'destroy' }}
-    env:
-      TF_VAR_clusterName: ${{ github.event.inputs.clusterName }}
-      TF_VAR_awsRegion: ${{ github.event.inputs.awsRegion }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -67,5 +57,5 @@ jobs:
       run: terraform validate
       working-directory: Terraform
     - name: Terraform Destroy
-      run: terraform destroy -auto-approve
+      run: terraform destroy -var clusterName=${{ github.event.inputs.clusterName }} -var awsRegion=${{ github.event.inputs.awsRegion }} -auto-approve
       working-directory: Terraform
