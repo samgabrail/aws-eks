@@ -24,6 +24,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
     - name: Terraform Apply
       run: terraform apply -auto-approve
+      working-directory: Terraform
 
   destroy_cluster:
     runs-on: ubuntu-latest
@@ -35,3 +36,4 @@ jobs:
       uses: hashicorp/setup-terraform@v1
     - name: Terraform Destroy
       run: terraform destroy -auto-approve
+      working-directory: Terraform
