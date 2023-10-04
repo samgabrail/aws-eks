@@ -22,7 +22,16 @@ jobs:
       uses: actions/checkout@v2
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
-    - name: Terraform Apply
+    - name: Terraform Init
+      run: terraform init
+      working-directory: Terraform
+    - name: Terraform FMT
+      run: terraform fmt
+      working-directory: Terraform
+    - name: Terraform Validate
+      run: terraform validate
+      working-directory: Terraform
+      - name: Terraform Apply
       run: terraform apply -auto-approve
       working-directory: Terraform
 
@@ -34,6 +43,15 @@ jobs:
       uses: actions/checkout@v2
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
+    - name: Terraform Init
+      run: terraform init
+      working-directory: Terraform
+    - name: Terraform FMT
+      run: terraform fmt
+      working-directory: Terraform
+    - name: Terraform Validate
+      run: terraform validate
+      working-directory: Terraform
     - name: Terraform Destroy
       run: terraform destroy -auto-approve
       working-directory: Terraform
